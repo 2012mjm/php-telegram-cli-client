@@ -1,12 +1,13 @@
 <?php
 /**
  * Copyright 2015 Eric Enold <zyberspace@zyberware.org>
+ * Develop by Mohammad javad Masoudian <info@mjm3d.ir>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-namespace Zyberspace\Telegram\Cli;
+namespace mjm\Telegram\Cli;
 
 /**
  * php-client for telegram-cli.
@@ -374,20 +375,27 @@ class Client extends RawClient
     }
 
     /**
-     * Send picture to peer
+     * Send photo to peer
      *
      * @param  string $peer The peer, gets escaped with escapePeer()
      * @param  string $path The picture path, gets formatted with formatFileName()
+     * @param  string $caption The picture caption, gets formatted with escapeStringArgument()
      * @return boolean
      *
      * @uses exec()
      * @uses escapePeer()
      * @uses formatFileName()
+     * @uses escapeStringArgument()
      */
-    public function sendPicture($peer, $path)
+    public function sendPhoto($peer, $path, $caption=null)
     {
         $peer = $this->escapePeer($peer);
         $formattedPath = $this->formatFileName($path);
+        
+        if($caption) {
+        	$caption = $this->escapeStringArgument($caption);
+        	return $this->exec('send_photo ' . $peer . ' ' . $formattedPath . ' ' . $caption);
+        }
 
         return $this->exec('send_photo ' . $peer . ' ' . $formattedPath);
     }
@@ -409,5 +417,49 @@ class Client extends RawClient
         $formattedPath = $this->formatFileName($path);
 
         return $this->exec('send_file ' . $peer . ' ' . $formattedPath);
+    }
+
+    /**
+     * Send video to peer
+     *
+     * @param  string $peer The peer, gets escaped with escapePeer()
+     * @param  string $path The picture path, gets formatted with formatFileName()
+     * @param  string $caption The picture caption, gets formatted with escapeStringArgument()
+     * @return boolean
+     *
+     * @uses exec()
+     * @uses escapePeer()
+     * @uses formatFileName()
+     * @uses escapeStringArgument()
+     */
+    public function sendVideo($peer, $path, $caption=null)
+    {
+        $peer = $this->escapePeer($peer);
+        $formattedPath = $this->formatFileName($path);
+        
+        if($caption) {
+        	$caption = $this->escapeStringArgument($caption);
+        	return $this->exec('send_video ' . $peer . ' ' . $formattedPath . ' ' . $caption);
+        }
+
+        return $this->exec('send_video ' . $peer . ' ' . $formattedPath);
+    }
+
+    /**
+     * Sends location to $peer.
+     *
+     * @param string $peer The peer, gets escaped with escapePeer()
+     * @param string $latitude
+     * @param string $longitude
+     *
+     * @return boolean true on success, false otherwise
+     *
+     * @uses exec()
+     * @uses escapePeer()
+     */
+    public function sendLocation ($peer, $latitude, $longitude)
+    {
+        $peer = $this->escapePeer($peer);
+        return $this->exec('send_location ' . $peer . ' ' . $latitude . ' ' . $longitude);
     }
 }

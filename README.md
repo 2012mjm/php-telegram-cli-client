@@ -59,7 +59,7 @@ If you want to use the discovery-shell, remove the `--update-no-dev` from the co
 
 ```php
 require('vendor/autoload.php');
-$telegram = new \Zyberspace\Telegram\Cli\Client('unix:///tmp/tg.sck');
+$telegram = new \mjm\Telegram\Cli\Client('unix:///tmp/tg.sck');
 
 $contactList = $telegram->getContactList();
 $telegram->msg($contactList[0]->print_name, 'Hey man, what\'s up? :D');

@@ -1,13 +1,17 @@
 {
-    "name": "zyberspace/telegram-cli-client",
+    "name": "mjm/telegram-cli-client",
     "description": "php-client for telegram-cli",
     "type": "library",
-    "homepage": "https://github.com/zyberspace/php-telegram-cli-client",
+    "homepage": "https://github.com/2012mjm/php-telegram-cli-client",
     "license": "MPL-2.0",
     "authors": [
         {
             "name": "zyberspace",
             "email": "zyberspace@zyberware.org"
+        },
+        {
+            "name": "Mohammad Javad Masoudian",
+            "email": "info@mjm3d.ir"
         }
     ],
     "require": {
@@ -18,7 +22,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Zyberspace\\Telegram\\Cli\\": "lib/"
+            "mjm\\Telegram\\Cli\\": "lib/"
         }
     }
 }
