@@ -7,11 +7,11 @@ If someone wants to takeover this project i am willing to give him push-rights o
 
 <hr />
 
-zyberspace/telegram-cli-client
+mjm/telegram-cli-client
 ==============================
 php-client for [telegram-cli](https://github.com/vysheng/tg/)
 
-[![Packagist](https://img.shields.io/packagist/v/zyberspace/telegram-cli-client.svg)](https://packagist.org/packages/zyberspace/telegram-cli-client)
+[![Packagist](https://img.shields.io/packagist/v/mjm/telegram-cli-client.svg)](https://packagist.org/packages/mjm/telegram-cli-client)
 [![Codacy](https://www.codacy.com/project/badge/4175a9bbf88547cdbd94cf57c457068d)](https://www.codacy.com/app/zyberspace/php-telegram-cli-client)
 [![License](https://img.shields.io/github/license/zyberspace/php-telegram-cli-client.svg)](https://www.mozilla.org/MPL/2.0/)
 
@@ -49,7 +49,7 @@ To stop the daemon use `killall telegram-cli` or `kill -TERM [telegram-pid]`.
 In your project-root:
 
 ```shell
-composer require --update-no-dev zyberspace/telegram-cli-client
+composer require --update-no-dev mjm/telegram-cli-client
 ```
 
 Composer will then automatically add the package to your project requirements and install it (also creates the `composer.json` if you don't have one already).  
